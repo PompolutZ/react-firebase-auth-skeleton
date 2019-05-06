@@ -1,10 +1,13 @@
-import React from 'react';
+import React from 'react'
+import { FirebaseContext } from '../firebase';
 
 function SignOut() {
+    const firebase = React.useContext(FirebaseContext);
+
     return (
-        <div>
-            SignOut
-        </div>
+        <button type="button" onClick={firebase.signOut}>
+            Sign Out
+        </button>
     )
 }
 
