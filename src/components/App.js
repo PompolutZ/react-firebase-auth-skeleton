@@ -13,8 +13,6 @@ import * as ROUTES from '../constants/routes'
 
 function App() {
     return (
-        // <AuthUserContext.Provider value={authUser}>
-        // </AuthUserContext.Provider>
         <Router>
             <div>
                 <Navigation />
