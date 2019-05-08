@@ -10,12 +10,8 @@ import Home from './Home'
 import Account from './Account'
 import Admin from './Admin'
 import * as ROUTES from '../constants/routes'
-import { FirebaseContext } from '../firebase'
-import { AuthUserContext, useAuthUser } from './Session'
 
 function App() {
-    const authUser = useAuthUser()
-
     return (
         // <AuthUserContext.Provider value={authUser}>
         // </AuthUserContext.Provider>

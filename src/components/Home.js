@@ -1,4 +1,5 @@
 import React from 'react';
+import { withAuthorization } from './Session';
 
 function Home() {
     return (
@@ -8,4 +9,6 @@ function Home() {
     )
 }
 
-export default Home;
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(Home);

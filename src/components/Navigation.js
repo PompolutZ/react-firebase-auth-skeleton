@@ -34,7 +34,7 @@ const NavigationNonAuth = () => (
 
 function Navigation() {
     const authUser = useAuthUser();
-
+    
     return (
         <div>{authUser ? <NavigationAuth /> : <NavigationNonAuth />}</div>
     );

@@ -1,17 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { FirebaseContext } from '../../firebase';
 
-function useAuthUser() {
+function useAuthUser(redirectUnauthorizedUser) {
     const [authUser, setAuthUser] = useState(null);
     const firebase = useContext(FirebaseContext);
 
     useEffect(() => {
-        const listener = firebase.auth.onAuthStateChanged(authUser => {
-            authUser ? setAuthUser(authUser) : setAuthUser(null)
+        const releaseAuthListener = firebase.auth.onAuthStateChanged(user => {
+            if(user) {
+                setAuthUser(user);
+            } else {
+                setAuthUser(null);
+                if(redirectUnauthorizedUser) {
+                    redirectUnauthorizedUser();
+                }
+            }
         });
 
-        return () => listener();
-    }, []);
+        return () => releaseAuthListener();
+    }, [])
 
     return authUser;
 }
