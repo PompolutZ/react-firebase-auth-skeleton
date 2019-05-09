@@ -26,6 +26,30 @@ class Firebase {
 
     updatePassword = password => this.auth.currentUser.updatePassword(password);
 
+    onAuthUserListener = (next, fallback) => 
+        this.auth.onAuthStateChanged(user => {
+            if(user) {
+                this.user(user.uid)
+                .once('value')
+                .then(snapshot => {
+                    const dbUser = snapshot.val();
+    
+                    if(!dbUser.roles) {
+                        dbUser.roles = {};
+                    }
+                    
+                    next({
+                        uid: user.uid,
+                        email: user.email,
+                        ...dbUser,
+                    });
+                });
+            } else {
+                fallback();
+            }
+        });
+    
+
     // *** User API ***
     user = uid => this.db.ref(`/users/${uid}`);
     

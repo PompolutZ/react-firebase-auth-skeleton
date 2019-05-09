@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { withRouter } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
-import useAuthUser from './useAuthUser';
+import { FirebaseContext } from '../../firebase';
 
 const withAuthorization = condition => Component => {
     function WithAuthorization(props) {
-        const authUser = useAuthUser(() => props.history.push(ROUTES.SIGN_IN));
+        const firebase = useContext(FirebaseContext);
 
-        return condition(authUser) ? <Component {...props} /> : null;
+        useEffect(() => {
+            const releaseAuthListener = firebase.onAuthUserListener(
+                authUser => {
+                    if(!condition(authUser)) {
+                        props.history.push(ROUTES.SIGN_IN);
+                    }
+                },
+                () => props.history.push(ROUTES.SIGN_IN)
+            );
+    
+            return () => releaseAuthListener();
+        }, []);
+        
+        return <Component {...props} />;
     }
 
     return withRouter(WithAuthorization);
