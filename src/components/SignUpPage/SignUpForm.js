@@ -23,6 +23,14 @@ function SignUpForm({ history }) {
     const onSubmit = event => {
         firebase.createUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
+                return firebase
+                    .user(authUser.user.uid)
+                    .set({
+                        username,
+                        email
+                    });
+            })
+            .then(() => {
                 setSignUpFormState(INITIAL_STATE);
                 history.push(ROUTES.HOME);
             })
