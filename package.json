@@ -1,12 +1,14 @@
 {
   "name": "react-firebase-auth",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "firebase": "^5.11.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0",
+    "firebase": "^7.2.2",
+    "lodash": "^4.17.15",
+    "lodash.template": "^4.5.0",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.0"
   },
   "scripts": {
