@@ -1,26 +1,31 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { FirebaseContext } from '../../firebase';
+import React, { useState, useEffect, useContext } from "react";
+import { FirebaseContext } from "../../firebase";
 
 function useAuthUser() {
-    const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem('authUser')));
-    const firebase = useContext(FirebaseContext);
+  const [authUser, setAuthUser] = useState(
+    JSON.parse(localStorage.getItem("authUser"))
+  );
+  const firebase = useContext(FirebaseContext);
 
-    useEffect(() => {
-        const releaseAuthListener = firebase.onAuthUserListener(
-            authUser => {
-                localStorage.setItem('authUser', JSON.stringify(authUser));
-                setAuthUser(authUser);
-            },
-            () => {
-                localStorage.removeItem('authUser');
-                setAuthUser(null);
-            }
-        )
+  useEffect(() => {
+    console.log("useAuthUser loaded");
+    const releaseAuthListener = firebase.onAuthUserListener(
+      authUser => {
+        console.log("useAuthUser.onAuthUser");
+        localStorage.setItem("authUser", JSON.stringify(authUser));
+        setAuthUser(authUser);
+      },
+      () => {
+        console.log("useAuthUser.fallback");
+        localStorage.removeItem("authUser");
+        setAuthUser(null);
+      }
+    );
 
-        return () => releaseAuthListener();
-    }, [])
+    return () => releaseAuthListener();
+  }, []);
 
-    return authUser;
+  return authUser;
 }
 
 export default useAuthUser;
