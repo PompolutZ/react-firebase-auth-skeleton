@@ -6,9 +6,6 @@ import * as ROUTES from "../constants/routes";
 import { FirebaseContext } from "../firebase";
 
 function AdminPage() {
-  useEffect(() => {
-    console.log("I have rendered and will fetch data");
-  }, []);
   return (
     <div>
       <h1>Admin</h1>
