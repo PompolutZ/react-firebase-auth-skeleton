@@ -11,12 +11,10 @@ function useAuthUser() {
     console.log("useAuthUser loaded");
     const releaseAuthListener = firebase.onAuthUserListener(
       authUser => {
-        console.log("useAuthUser.onAuthUser");
         localStorage.setItem("authUser", JSON.stringify(authUser));
         setAuthUser(authUser);
       },
       () => {
-        console.log("useAuthUser.fallback");
         localStorage.removeItem("authUser");
         setAuthUser(null);
       }
