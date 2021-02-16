@@ -23,7 +23,7 @@ const withAuthorization = condition => Component => {
       );
 
       return () => releaseAuthListener();
-    }, []);
+    }, [firebase, history]);
 
     return condition(user) && <Component {...props} />;
   }

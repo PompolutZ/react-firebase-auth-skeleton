@@ -1,3 +1,11 @@
+Follows ROBIN WIERUCH [tutorial](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial ) to get started with React/Firebase. 
+
+Some parts has been rewritten using hooks by me, so Robin should not be blamed if something doesn't work as expected :P 
+
+This repository was created for my own use mainly, since I was tired a bit of repeating steps of setting up React+Firebase project to experiment with various ideas or use it as a scaffold for some idea with a potential grow into something bigger.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

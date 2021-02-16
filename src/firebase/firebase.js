@@ -4,7 +4,6 @@ import "firebase/auth";
 
 // CREATE ./config.js file to export your firebase configuration here.
 import config from "./config";
-
 class Firebase {
   constructor() {
     app.initializeApp(config);

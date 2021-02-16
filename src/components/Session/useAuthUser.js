@@ -8,7 +8,6 @@ function useAuthUser() {
   const firebase = useContext(FirebaseContext);
 
   useEffect(() => {
-    console.log("useAuthUser loaded");
     const releaseAuthListener = firebase.onAuthUserListener(
       authUser => {
         localStorage.setItem("authUser", JSON.stringify(authUser));
@@ -21,7 +20,7 @@ function useAuthUser() {
     );
 
     return () => releaseAuthListener();
-  }, []);
+  }, [firebase]);
 
   return authUser;
 }

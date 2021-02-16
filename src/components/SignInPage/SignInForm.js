@@ -1,7 +1,6 @@
 import React from "react";
-import { withRouter, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-import * as ROUTES from "../../constants/routes";
 import { FirebaseContext } from "../../firebase";
 
 const INITIAL_STATE = {
@@ -30,7 +29,6 @@ function SignInForm() {
       .then(() => {
         setSignInFormState(INITIAL_STATE);
         history.goBack();
-        //history.push(ROUTES.HOME);
       })
       .catch(error => {
         setSignInFormState(prev => ({ ...prev, error: error }));
