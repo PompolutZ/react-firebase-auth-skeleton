@@ -4,6 +4,28 @@ Some parts has been rewritten using hooks by me, so Robin should not be blamed i
 
 This repository was created for my own use mainly, since I was tired a bit of repeating steps of setting up React+Firebase project to experiment with various ideas or use it as a scaffold for some idea with a potential grow into something bigger.
 
+## To get started
+
+1. Run `npm install` or `yarn` to install dependencies
+2. Run `npx firebase init` to configure this project to become your firebase project
+3. Add `config.js` file to `src/firebase/` and with following:
+
+```js
+export const config = {
+    apiKey: "****",
+    authDomain: "****",
+    databaseURL: "****",
+    projectId: "****",
+    storageBucket: "****",
+    messagingSenderId: "****",
+    appId: "****",
+    measurementId: "****",
+};
+```
+
+Replace `****` according to your project's settings, which you can find in Firebase Console.
+
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
